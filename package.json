@@ -1,0 +1,30 @@
+{
+  "name": "ai-network-debug-copier",
+  "version": "0.1.0",
+  "description": "Local-first Chrome DevTools extension for copying one Network request as an AI-friendly debug bundle.",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write .",
+    "test:manual": "node tests/manual-server.mjs"
+  },
+  "keywords": [
+    "chrome-extension",
+    "devtools",
+    "network",
+    "debugging",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.325",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  }
+}

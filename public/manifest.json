@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "AI Network Debug Copier",
+  "description": "Copy one Chrome DevTools Network request as a local, AI-friendly debug bundle.",
+  "version": "0.1.0",
+  "devtools_page": "src/devtools.html",
+  "permissions": []
+}

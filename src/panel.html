@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Network</title>
+    <script type="module" src="./panel.ts"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <h1>AI Network</h1>
+          <p id="statusText">
+            Captured requests stay in this DevTools panel only.
+          </p>
+        </div>
+        <div class="toolbar">
+          <label class="sensitive-toggle">
+            <input id="includeSensitive" type="checkbox" />
+            Include sensitive values
+          </label>
+          <label>
+            Copy limit
+            <select id="copyLimit">
+              <option value="200">200 KB</option>
+              <option value="500">500 KB</option>
+              <option value="1024">1 MB</option>
+            </select>
+          </label>
+          <button id="clearButton" type="button">Clear</button>
+        </div>
+      </header>
+
+      <section id="sensitiveWarning" class="warning" hidden>
+        Sensitive values will be included when copying. Do not paste bundles
+        into tools or tickets you do not trust.
+      </section>
+
+      <section class="filters" aria-label="Request filters">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search URL, method, MIME type, or status..."
+        />
+        <select id="statusFilter">
+          <option value="all">All status</option>
+          <option value="2xx">2xx</option>
+          <option value="3xx">3xx</option>
+          <option value="4xx">4xx</option>
+          <option value="5xx">5xx</option>
+        </select>
+        <select id="typeFilter">
+          <option value="all">All types</option>
+          <option value="fetch-xhr">Fetch/XHR</option>
+          <option value="document">Document</option>
+          <option value="script">Script</option>
+          <option value="stylesheet">Stylesheet</option>
+          <option value="image">Image</option>
+          <option value="other">Other</option>
+        </select>
+        <label class="failed-only">
+          <input id="failedOnly" type="checkbox" />
+          Failed only
+        </label>
+      </section>
+
+      <section class="workspace">
+        <section class="request-list" aria-label="Captured requests">
+          <div class="table-head">
+            <span>Method</span>
+            <span>Status</span>
+            <span>URL</span>
+            <span>MIME</span>
+            <span>Time</span>
+            <span>Type</span>
+          </div>
+          <div id="requestRows" class="rows"></div>
+          <div id="emptyState" class="empty-state">
+            Open DevTools, keep this panel active, then reload or reproduce the
+            issue.
+          </div>
+        </section>
+
+        <aside class="details" aria-label="Selected request details">
+          <div class="details-header">
+            <div>
+              <h2 id="detailsTitle">Select a request</h2>
+              <p id="detailsMeta">No request selected.</p>
+            </div>
+            <div class="copy-actions">
+              <button id="copyMarkdown" type="button" disabled>
+                Copy AI Markdown
+              </button>
+              <button id="copyJson" type="button" disabled>Copy JSON</button>
+              <button id="copyCurl" type="button" disabled>Copy cURL</button>
+            </div>
+          </div>
+          <div
+            id="copyStatus"
+            class="copy-status"
+            role="status"
+            aria-live="polite"
+          ></div>
+          <div id="detailContent" class="detail-content"></div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
